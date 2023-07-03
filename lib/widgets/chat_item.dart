@@ -19,13 +19,33 @@ class ChatItem extends StatelessWidget {
     return SizedBox(
       child: ListTile(
         onTap: () => _selectChat(context, chat),
+        onLongPress: () {
+          // ...
+        },
         leading: CircleAvatar(
           radius: 20.0,
           backgroundImage: NetworkImage(chat.picture),
         ),
         title: Text(chat.name),
         subtitle: Text(chat.lastChat),
-        trailing: Text(chat.latestTimestamp),
+        trailing: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(chat.latestTimestamp),
+            const SizedBox(height: 6.0),
+            const CircleAvatar(
+              backgroundColor: Color(0xff008069),
+              radius: 10.0,
+              child: Text(
+                '1',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12.0,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
